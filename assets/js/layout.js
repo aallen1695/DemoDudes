@@ -2,7 +2,6 @@
   const navItems = [
     { id: 'home', label: 'Home', href: 'index.html', icon: 'bi-house-door' },
     { id: 'blog', label: 'Blog', href: 'blog.html', icon: 'bi-journal-richtext' },
-    { id: 'funnel', label: 'Funnel', href: 'vsl.html', icon: 'bi-funnel' },
     { id: 'contact', label: 'Contact', href: 'contact.html', icon: 'bi-chat-dots' },
     { id: 'login', label: 'Login', href: 'login.html', icon: 'bi-box-arrow-in-right' },
     { id: 'privacy', label: 'Privacy', href: 'privacy.html', icon: 'bi-shield-check' },
@@ -31,6 +30,9 @@
         <nav class="sidebar-nav" aria-label="Primary navigation">
           ${links}
         </nav>
+        <a class="sidebar-join-link" href="vsl.html" title="Join Now" aria-label="Join Now">
+          <i class="bi bi-stars"></i>
+        </a>
       </aside>
     `;
   }
@@ -42,7 +44,7 @@
           <p class="eyebrow mb-0">Demo Dudes Inc.</p>
           <h1 class="page-title mb-0">${pageTitle}</h1>
         </div>
-        <a class="btn btn-brand-secondary" href="vsl.html">View Offer Funnel</a>
+        <a class="btn btn-brand-secondary" href="vsl.html">Join Now</a>
       </header>
     `;
   }
@@ -51,7 +53,7 @@
     const year = new Date().getFullYear();
     return `
       <footer class="app-footer">
-        <div class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-md-center">
+        <div class="footer-inner d-flex flex-column flex-md-row gap-2 justify-content-between align-items-md-center">
           <p class="mb-0">&copy; ${year} Demo Dudes Inc. Built for product and funnel demos.</p>
           <div class="footer-links d-flex gap-3">
             <a href="privacy.html">Privacy Policy</a>
