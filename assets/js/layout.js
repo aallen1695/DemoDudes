@@ -25,7 +25,7 @@
     return `
       <aside class="app-sidebar">
         <a class="brand-mark" href="index.html" aria-label="Demo Dudes Home">
-          <img src="assets/images/demo-dudes-icon.svg" alt="Demo Dudes icon" />
+          <img src="assets/images/demo-dudes-icon.png" alt="Demo Dudes icon" />
         </a>
         <nav class="sidebar-nav" aria-label="Primary navigation">
           ${links}
