@@ -89,9 +89,45 @@
     });
   }
 
+  function wireDemoForms() {
+    document.querySelectorAll('[data-demo-form]').forEach((form) => {
+      const successMessage = form.dataset.successMessage || 'Thanks. You are in.';
+      const messageEl = form.querySelector('[data-form-success]');
+      const button = form.querySelector('[data-form-submit]');
+
+      if (!button || !messageEl) {
+        return;
+      }
+
+      button.addEventListener('click', function () {
+        const requiredFields = form.querySelectorAll('[required]');
+        let valid = true;
+
+        requiredFields.forEach((field) => {
+          if (!field.checkValidity()) {
+            field.reportValidity();
+            valid = false;
+          }
+        });
+
+        if (!valid) {
+          return;
+        }
+
+        messageEl.textContent = successMessage;
+        messageEl.hidden = false;
+        form.dataset.submitted = 'true';
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectIncludes);
+    document.addEventListener('DOMContentLoaded', function () {
+      injectIncludes();
+      wireDemoForms();
+    });
   } else {
     injectIncludes();
+    wireDemoForms();
   }
 })();

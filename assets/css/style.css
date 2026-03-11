@@ -306,6 +306,125 @@ a:hover {
   padding: 2rem;
 }
 
+.lead-form-panel {
+  background: linear-gradient(145deg, rgba(11, 42, 69, 0.98), rgba(18, 62, 99, 0.98));
+  color: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(11, 42, 69, 0.18);
+}
+
+.lead-form-panel .form-control {
+  min-height: 52px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.form-success {
+  margin-top: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: rgba(110, 193, 228, 0.16);
+  border: 1px solid rgba(110, 193, 228, 0.35);
+  color: #dff5ff;
+  font-weight: 600;
+}
+
+.resource-hero {
+  background: linear-gradient(145deg, #fff 0%, #f5fbff 100%);
+  border: 1px solid rgba(11, 42, 69, 0.08);
+  border-radius: 28px;
+  padding: clamp(1.5rem, 2.6vw, 3rem);
+  box-shadow: var(--app-shadow);
+}
+
+.report-cover {
+  position: relative;
+  min-height: 420px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(242, 140, 40, 0.55), transparent 30%),
+    radial-gradient(circle at 80% 18%, rgba(44, 159, 214, 0.5), transparent 28%),
+    linear-gradient(155deg, #0b2a45 0%, #123e63 58%, #2c9fd6 100%);
+  overflow: hidden;
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.report-cover::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+}
+
+.report-cover-badge,
+.report-cover-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.report-cover-badge {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: auto;
+}
+
+.report-cover-copy h2,
+.report-cover-copy p {
+  color: #fff;
+}
+
+.bullet-stack {
+  padding-left: 1.15rem;
+  margin-bottom: 0;
+}
+
+.bullet-stack li + li {
+  margin-top: 0.75rem;
+}
+
+.webinar-panel {
+  background: linear-gradient(160deg, rgba(44, 159, 214, 0.08), rgba(242, 140, 40, 0.08));
+  border: 1px solid rgba(11, 42, 69, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+}
+
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.event-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  background: rgba(11, 42, 69, 0.06);
+  padding: 0.55rem 0.9rem;
+  color: var(--brand-navy);
+  font-weight: 700;
+}
+
+.fine-print {
+  color: #cfefff;
+  font-size: 0.85rem;
+}
+
 @media (max-width: 991px) {
   :root {
     --sidebar-width: 74px;
