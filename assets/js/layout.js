@@ -89,17 +89,60 @@
     });
   }
 
+  function ensureFavicon() {
+    const head = document.head;
+
+    if (!head.querySelector('link[data-demo-favicon="ico"]')) {
+      const icoLink = document.createElement('link');
+      icoLink.rel = 'icon';
+      icoLink.href = 'assets/images/demo-dudes-icon.ico';
+      icoLink.sizes = 'any';
+      icoLink.setAttribute('data-demo-favicon', 'ico');
+      head.appendChild(icoLink);
+    }
+
+    if (!head.querySelector('link[data-demo-favicon="png"]')) {
+      const pngLink = document.createElement('link');
+      pngLink.rel = 'icon';
+      pngLink.type = 'image/png';
+      pngLink.href = 'assets/images/demo-dudes-icon.png';
+      pngLink.setAttribute('data-demo-favicon', 'png');
+      head.appendChild(pngLink);
+    }
+  }
+
   function wireDemoForms() {
     document.querySelectorAll('[data-demo-form]').forEach((form) => {
       const successMessage = form.dataset.successMessage || 'Thanks. You are in.';
       const messageEl = form.querySelector('[data-form-success]');
       const button = form.querySelector('[data-form-submit]');
+      let loadingEl = form.querySelector('[data-form-loading]');
 
       if (!button || !messageEl) {
         return;
       }
 
+      if (!loadingEl) {
+        loadingEl = document.createElement('div');
+        loadingEl.className = 'form-loading';
+        loadingEl.hidden = true;
+        loadingEl.setAttribute('data-form-loading', '');
+        loadingEl.setAttribute('aria-live', 'polite');
+        loadingEl.innerHTML =
+          '<img src="assets/images/demo-dudes-icon.png" alt="Demo Dudes icon" />' +
+          '<p class="mb-0">Going to space and back...</p>';
+        form.appendChild(loadingEl);
+      }
+
+      const contentEls = Array.from(form.children).filter(function (child) {
+        return child !== messageEl && child !== loadingEl;
+      });
+
       button.addEventListener('click', function () {
+        if (form.dataset.submitting === 'true') {
+          return;
+        }
+
         const requiredFields = form.querySelectorAll('[required]');
         let valid = true;
 
@@ -114,19 +157,32 @@
           return;
         }
 
-        messageEl.textContent = successMessage;
-        messageEl.hidden = false;
-        form.dataset.submitted = 'true';
+        form.dataset.submitting = 'true';
+        contentEls.forEach(function (el) {
+          el.hidden = true;
+        });
+        messageEl.hidden = true;
+        loadingEl.hidden = false;
+
+        window.setTimeout(function () {
+          loadingEl.hidden = true;
+          messageEl.textContent = successMessage;
+          messageEl.hidden = false;
+          form.dataset.submitting = 'false';
+          form.dataset.submitted = 'true';
+        }, 500);
       });
     });
   }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
+      ensureFavicon();
       injectIncludes();
       wireDemoForms();
     });
   } else {
+    ensureFavicon();
     injectIncludes();
     wireDemoForms();
   }
