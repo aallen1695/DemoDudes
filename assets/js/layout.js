@@ -2,6 +2,8 @@
   const navItems = [
     { id: 'home', label: 'Home', href: 'index.html', icon: 'bi-house-door' },
     { id: 'blog', label: 'Blog', href: 'blog.html', icon: 'bi-journal-richtext' },
+    { id: 'report', label: 'Special Report', href: 'special-report.html', icon: 'bi-file-earmark-richtext' },
+    { id: 'webinar', label: 'Webinar', href: 'webinar-registration.html', icon: 'bi-camera-video' },
     { id: 'contact', label: 'Contact', href: 'contact.html', icon: 'bi-chat-dots' },
     { id: 'login', label: 'Login', href: 'login.html', icon: 'bi-box-arrow-in-right' },
     { id: 'privacy', label: 'Privacy', href: 'privacy.html', icon: 'bi-shield-check' },
