@@ -89,28 +89,6 @@
     });
   }
 
-  function ensureFavicon() {
-    const head = document.head;
-
-    if (!head.querySelector('link[data-demo-favicon="ico"]')) {
-      const icoLink = document.createElement('link');
-      icoLink.rel = 'icon';
-      icoLink.href = 'assets/images/demo-dudes-icon.ico';
-      icoLink.sizes = 'any';
-      icoLink.setAttribute('data-demo-favicon', 'ico');
-      head.appendChild(icoLink);
-    }
-
-    if (!head.querySelector('link[data-demo-favicon="png"]')) {
-      const pngLink = document.createElement('link');
-      pngLink.rel = 'icon';
-      pngLink.type = 'image/png';
-      pngLink.href = 'assets/images/demo-dudes-icon.png';
-      pngLink.setAttribute('data-demo-favicon', 'png');
-      head.appendChild(pngLink);
-    }
-  }
-
   function wireDemoForms() {
     document.querySelectorAll('[data-demo-form]').forEach((form) => {
       const successMessage = form.dataset.successMessage || 'Thanks. You are in.';
@@ -177,12 +155,10 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
-      ensureFavicon();
       injectIncludes();
       wireDemoForms();
     });
   } else {
-    ensureFavicon();
     injectIncludes();
     wireDemoForms();
   }
