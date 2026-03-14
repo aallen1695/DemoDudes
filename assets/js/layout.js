@@ -94,11 +94,12 @@
   function wireDemoForms() {
     document.querySelectorAll('[data-demo-form]').forEach((form) => {
       const successMessage = form.dataset.successMessage || 'Thanks. You are in.';
+      const redirectUrl = form.dataset.successRedirect || '';
       const messageEl = form.querySelector('[data-form-success]');
       const button = form.querySelector('[data-form-submit]');
       let loadingEl = form.querySelector('[data-form-loading]');
 
-      if (!button || !messageEl) {
+      if (!button || (!messageEl && !redirectUrl)) {
         return;
       }
 
@@ -118,36 +119,39 @@
         return child !== messageEl && child !== loadingEl;
       });
 
-      button.addEventListener('click', function () {
+      form.addEventListener('submit', function (event) {
         if (form.dataset.submitting === 'true') {
+          event.preventDefault();
           return;
         }
 
-        const requiredFields = form.querySelectorAll('[required]');
-        let valid = true;
-
-        requiredFields.forEach((field) => {
-          if (!field.checkValidity()) {
-            field.reportValidity();
-            valid = false;
-          }
-        });
-
-        if (!valid) {
+        if (!form.checkValidity()) {
           return;
         }
 
+        event.preventDefault();
         form.dataset.submitting = 'true';
+        button.disabled = true;
         contentEls.forEach(function (el) {
           el.hidden = true;
         });
-        messageEl.hidden = true;
+        if (messageEl) {
+          messageEl.hidden = true;
+        }
         loadingEl.hidden = false;
 
         window.setTimeout(function () {
+          if (redirectUrl) {
+            window.location.href = redirectUrl;
+            return;
+          }
+
           loadingEl.hidden = true;
-          messageEl.textContent = successMessage;
-          messageEl.hidden = false;
+          if (messageEl) {
+            messageEl.textContent = successMessage;
+            messageEl.hidden = false;
+          }
+          button.disabled = false;
           form.dataset.submitting = 'false';
           form.dataset.submitted = 'true';
         }, 500);

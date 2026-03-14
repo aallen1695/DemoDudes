@@ -29,28 +29,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="content-card p-4 form-shell">
           <h2 class="h3">Complete Your Demo Dudes Order</h2>
           <p>Checkout UI-only for demo walkthroughs. Submit routes to the upsell step.</p>
-          <form action="upsell.html">
+          <form action="upsell.html" method="post" data-demo-form data-success-redirect="upsell.html">
             <h3 class="h5 mt-3">Customer Information</h3>
             <div class="row g-3">
-              <div class="col-md-6"><label class="form-label">First Name</label><input class="form-control" type="text" /></div>
-              <div class="col-md-6"><label class="form-label">Last Name</label><input class="form-control" type="text" /></div>
-              <div class="col-12"><label class="form-label">Email</label><input class="form-control" type="email" /></div>
+              <div class="col-md-6"><label class="form-label">First Name</label><input class="form-control" name="first_name" type="text" required /></div>
+              <div class="col-md-6"><label class="form-label">Last Name</label><input class="form-control" name="last_name" type="text" required /></div>
+              <div class="col-12"><label class="form-label">Email</label><input class="form-control" name="email" type="email" required /></div>
             </div>
             <h3 class="h5 mt-4">Billing Address</h3>
             <div class="row g-3">
-              <div class="col-12"><label class="form-label">Street Address</label><input class="form-control" type="text" /></div>
-              <div class="col-md-6"><label class="form-label">City</label><input class="form-control" type="text" /></div>
-              <div class="col-md-3"><label class="form-label">State</label><input class="form-control" type="text" /></div>
-              <div class="col-md-3"><label class="form-label">Zip</label><input class="form-control" type="text" /></div>
+              <div class="col-12"><label class="form-label">Street Address</label><input class="form-control" name="street_address" type="text" required /></div>
+              <div class="col-md-6"><label class="form-label">City</label><input class="form-control" name="city" type="text" required /></div>
+              <div class="col-md-3"><label class="form-label">State</label><input class="form-control" name="state" type="text" required /></div>
+              <div class="col-md-3"><label class="form-label">Zip</label><input class="form-control" name="zip" type="text" required /></div>
             </div>
             <h3 class="h5 mt-4">Payment Details</h3>
             <div class="row g-3">
-              <div class="col-12"><label class="form-label">Card Number</label><input class="form-control" type="text" inputmode="numeric" /></div>
-              <div class="col-md-4"><label class="form-label">Exp Month</label><input class="form-control" type="text" /></div>
-              <div class="col-md-4"><label class="form-label">Exp Year</label><input class="form-control" type="text" /></div>
-              <div class="col-md-4"><label class="form-label">CVV</label><input class="form-control" type="text" /></div>
+              <div class="col-12"><label class="form-label">Card Number</label><input class="form-control" name="card_number" type="text" inputmode="numeric" required /></div>
+              <div class="col-md-4"><label class="form-label">Exp Month</label><input class="form-control" name="exp_month" type="text" required /></div>
+              <div class="col-md-4"><label class="form-label">Exp Year</label><input class="form-control" name="exp_year" type="text" required /></div>
+              <div class="col-md-4"><label class="form-label">CVV</label><input class="form-control" name="cvv" type="text" required /></div>
             </div>
-            <button class="btn btn-brand btn-lg mt-4 w-100" type="submit">Submit Order</button>
+            <button class="btn btn-brand btn-lg mt-4 w-100" type="submit" data-form-submit>Submit Order</button>
+            <div class="form-success" data-form-success hidden></div>
           </form>
         </div>
       </section>

@@ -34,9 +34,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="content-card p-3 mt-4" style="background: var(--brand-soft-gray); box-shadow: none;">
             <h3 class="h5">Get weekly growth briefings</h3>
             <p class="mb-3">Subscribe for subscriber retention playbooks, product launch templates, and DTC campaign teardowns.</p>
-            <form class="row g-2">
-              <div class="col-md-8"><input class="form-control" type="email" placeholder="Enter your email" /></div>
-              <div class="col-md-4 d-grid"><button class="btn btn-brand" type="button">Subscribe</button></div>
+            <form class="row g-2" action="" method="post" data-demo-form data-success-message="Dude! You’re in. One of the dudes just nodded approvingly and added you to the list.">
+              <div class="col-md-8"><input class="form-control" name="email" type="email" placeholder="Enter your email" required /></div>
+              <div class="col-md-4 d-grid"><button class="btn btn-brand" type="submit" data-form-submit>Subscribe</button></div>
+              <div class="col-12"><div class="form-success" data-form-success hidden></div></div>
             </form>
           </div>
         </article>
